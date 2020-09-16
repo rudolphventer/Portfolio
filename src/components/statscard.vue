@@ -9,52 +9,53 @@ export default {
         const events = await this.axios.get(process.env.VUE_APP_COMMITS_URL);
         //This bit of code converts the dates to a date string
         let eventDates = events.data.map(a => new Date(a.created_at.split('T')[0]).toLocaleString().split(',')[0]).reverse();
-        console.log(eventDates)
       
-        //Here I create a new object which ocunts the occurence of dates
+        //Here I create a new array which consists of a count the occurence of each date
         var counts = {};
         eventDates.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
-        console.log(counts)
 
         //Convert int two complimentary arrays
         var dates = Object.entries(counts).map(object => moment(object[0], 'DD-MM-YYYY'))
-        console.log(dates)
         var occurences = Object.entries(counts).map(object => object[1])
         
         var dateArr = [];
         var occurencesArr = [];
+
+        /* 
+        Yes, this masterpiece deserves a code comment block
+        Here, I create an array of the last 90 days, then check each day to see if it appears as a day where I made a commit,
+        if I made a commit on that day, it increments the corresponding value in the second array by that amount.
+
+        This seems very roundabout but graph.js requires two seperate arrays and this satisfies the constraint.
+        */
         for(var i = 0; i < 90; i++)
         {
           var newDate = moment().subtract(i, "days")
           var index = dates.findIndex(function (element) { 
-              return element == newDate; 
+              return moment(newDate).isSame(moment(element, 'DD/MM/YYYY'), 'day')
           }); 
           if(index == -1)
           {
-            dateArr.push(newDate);
-            occurencesArr.push(Math.random(0,30));
+            dateArr.push(newDate.format('DD-MM-YYYY').toLocaleString());
+            occurencesArr.push(0);
           } else{
-            dateArr.push(newDate);
+            dateArr.push(newDate.format('DD-MM-YYYY').toLocaleString());
             occurencesArr.push(occurences[index]);
           }
             
         }
-        console.log(dateArr)
-        console.log(occurencesArr)
-        console.log(process.env.VUE_APP_USER_URL)
 
         
         var chartdata = {
-          labels: dateArr,
+          labels: dateArr.reverse(),
         datasets: [{
             label: 'Commits to Public Repositories in the Last 90 Days',
-            data: occurencesArr,
+            data: occurencesArr.reverse(),
         }]}
     var options = {
       responsive: true,
       maintainAspectRatio: false
     }
-    console.log(dates, occurences)
     this.renderChart(chartdata, options)
   },
 }

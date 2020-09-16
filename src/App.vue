@@ -4,7 +4,7 @@
         <img alt="Vue logo" src="./assets/logolight.png" width="300px" height="auto">
         <div class="grid">
           <profile-card/>
-          <stats-card/>
+          <stats-card style="position: relative; height:20vh; width:40vw"/>
 
         </div>
     </div>
