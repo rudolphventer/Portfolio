@@ -4,7 +4,9 @@
         <img alt="Vue logo" src="./assets/logolight.png" width="300px" height="auto">
         <div class="grid">
           <profile-card/>
-          <stats-card style="position: relative; height:20vh; width:40vw"/>
+          <stats-card class="fullwide tall"/>
+          <git-card class="fullwide"/>
+          
 
         </div>
     </div>
@@ -15,12 +17,14 @@
 <script>
 import ProfileCard from './components/profilecard.vue'
 import StatsCard from './components/statscard.vue'
+import GitCard from './components/gitshowcase.vue'
 
 export default {
   name: 'App',
   components: {
     ProfileCard,
-    StatsCard
+    StatsCard,
+    GitCard
   }
 }
 </script>

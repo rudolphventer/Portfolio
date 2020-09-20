@@ -36,8 +36,12 @@ export default {
   },
   mounted: async function () {
 
-        const user = await this.axios.get(process.env.VUE_APP_USER_URL);
-        this.user = user.data;
+        //const user = await this.axios.get(process.env.VUE_APP_USER_URL);
+        //this.user = user.data;
+        const user = await fetch(process.env.VUE_APP_USER_URL);
+        var userData = await user.json();
+        this.user = userData;
+
         const events = await this.axios.get(process.env.VUE_APP_COMMITS_URL);
         this.events = events.data;
         
@@ -62,29 +66,7 @@ export default {
   height: 1rem;
   padding: 0;
 }
-.details
-{
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding-left: 1rem;
-}
-h3{
-  margin: 0;
-}
 
-.location
-{
-  float: left;
-  color: rgb(78, 78, 78);
-}
-
-.bio
-{
-  float: left;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-}
 
 .profilePic {
 	clip-path: circle(3rem at center);
