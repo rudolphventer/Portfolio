@@ -1,7 +1,7 @@
 <template>
 <a v-bind:href =repo.html_url style="text-decoration: none; color: inherit;">
     <div class="cardGrid">
-        <div class="detailsRepo" style="float: left">
+        <div class="detailsRepo">
             <h3>{{repo.name}}</h3>
             <div class="bio">{{repo.description}}</div>
             <div class="location">{{repo.full_name}}</div>
