@@ -27,7 +27,7 @@ body {
 .grid {
 	display: grid;
 	grid-gap: 1rem;
-	grid-auto-rows: 10rem;
+	grid-auto-rows: min-content;
 	padding: 1rem;
 	/*allows responsive scaling of grid*/
 	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
@@ -67,6 +67,15 @@ body {
   padding-left: 1rem;
   word-wrap: break-word;
 }
+.detailsRepo
+{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-left: 1rem;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+}
 h3{
   margin: 0;
 }
@@ -83,11 +92,29 @@ h3{
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
 }
+.hiddenMobile2
+	{
+		display: none !important;
+	}
+.cardGrid
+{
+	display: grid;
+	/*allows responsive scaling of grid*/
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
 
 /*for desktop*/
 @media only screen and (min-width: 768px) {
 	.Background {
 		padding-left: 20vw;
 		padding-right: 20vw;
+	}
+	.hiddenMobile2
+	{
+		display: inherit !important;
+	}
+	.detailsRepo
+	{
+		text-align: left;
 	}
 } 

@@ -1,14 +1,13 @@
 <template>
 <a v-bind:href =repo.html_url style="text-decoration: none; color: inherit;">
-    <div style="display: inline-block">
-        <div class="details" style="float: left">
+    <div class="cardGrid">
+        <div class="detailsRepo" style="float: left">
             <h3>{{repo.name}}</h3>
             <div class="bio">{{repo.description}}</div>
             <div class="location">{{repo.full_name}}</div>
         </div>
-        <doughnut v-bind:languages="languages" :maxno="totalLines" v-if="totalLines >= 0"/>
+        <doughnut class="hiddenMobile" v-bind:languages="languages" :maxno="totalLines" v-if="totalLines >= 0"/>
     </div>
-
 </a>
 
 
@@ -21,6 +20,8 @@ export default {
   components: {
     Doughnut
   },
+  props: [
+    'repoName'],
   data() {
     return {
       repo: {},
@@ -30,10 +31,11 @@ export default {
     
   },
   created: async function () {
-      const repo = await fetch("http://api.github.com/repos/rudolphventer/greentea");
+    console.log(this.repoName)
+      const repo = await fetch(process.env.VUE_APP_EVENTS_ROOT+this.repoName);
         var repoData = await repo.json();
         this.repo = repoData;
-        const languages = await fetch("https://api.github.com/repos/rudolphventer/greentea/languages");
+        const languages = await fetch(process.env.VUE_APP_EVENTS_ROOT+this.repoName+"/languages");
         var langData = await languages.json();
         this.languages = langData;
         this.totalLines = await Object.entries(langData).reduce((a, b) => +a + +b[1], 0);

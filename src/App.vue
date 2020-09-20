@@ -4,8 +4,10 @@
         <img alt="Vue logo" src="./assets/logolight.png" width="300px" height="auto">
         <div class="grid">
           <profile-card/>
+          
+          <git-card v-bind:repoName="greentea"/>
+          <git-card v-bind:repoName="startpage"/>
           <stats-card class="fullwide tall"/>
-          <git-card class="fullwide"/>
           
 
         </div>
@@ -25,8 +27,13 @@ export default {
     ProfileCard,
     StatsCard,
     GitCard
-  }
-}
+  },
+  data() {
+    return {
+      greentea: "greentea",
+      startpage: "Startpage-V2"
+    };
+}}
 </script>
 
 <style>
