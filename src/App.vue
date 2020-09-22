@@ -10,6 +10,8 @@
           <git-card v-bind:repoName="startpage"/>
           <git-card v-bind:repoName="portfolio"/>
           <stats-card class="fullwide tall"/>
+          <news-component/>
+          <contact-me/>
           
 
         </div>
@@ -23,6 +25,8 @@ import ProfileCard from './components/profilecard.vue'
 import StatsCard from './components/statscard.vue'
 import GitCard from './components/gitshowcase.vue'
 import BlankComponent from './components/blankComponent.vue'
+import NewsComponent from './components/newsComponent.vue'
+import ContactMe from './components/contactMe.vue'
 
 
 export default {
@@ -31,7 +35,9 @@ export default {
     ProfileCard,
     StatsCard,
     GitCard,
-    BlankComponent
+    BlankComponent,
+    NewsComponent,
+    ContactMe
   },
   data() {
     return {
@@ -53,5 +59,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color:#505050 !important;
 }
 </style>

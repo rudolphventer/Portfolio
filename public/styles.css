@@ -1,10 +1,11 @@
 body {
-	background: rgb(83,227,166);
-	background: linear-gradient(90deg, rgba(83,227,166,1) 0%, rgba(80,163,162,1) 100%);
 	margin: 0%;
 	padding: 0%;
+	height: auto;
 	scrollbar-width: none;  /* Firefox */
+	
 }
+
 
 ::-webkit-scrollbar {
     width: 0px;
@@ -15,13 +16,30 @@ body {
 	scrollbar-width: none; /* Firefox implementation */
 }
 
-body {
-	background-image: url("./background.jpg");
-}
-
 .Background {
 	justify-content: center;
+	/* The image used */
+	background: gray url("./background.jpg") repeat 0 0;
+
+	/* Set a specific height */
+	height: 100%;
+	margin: 0;
+	width: 100vw;
+	padding: 0%;
+	/* animation*/
+	box-sizing: border-box;
+	-webkit-animation: slide 120s linear infinite;
+	background-size: cover;
+	
 }
+
+  @-webkit-keyframes slide {
+	  from { background-position: 0 0; }
+	  to { background-position: -150vw 0; }
+  }
+  
+
+
 
 /*https://mastery.games/post/tile-layouts/*/
 .grid {
@@ -32,7 +50,6 @@ body {
 	/*allows responsive scaling of grid*/
 	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 	grid-auto-flow: dense;
-	margin-bottom: 5vh;
 	max-width: 95vw;
 	overflow: hidden;
   }
