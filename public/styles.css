@@ -127,8 +127,14 @@ h3{
     padding-left: 0.6rem;
     padding-right: 0.6rem;
 }
+.reactive:hover
+{
+	color:whitesmoke;
+	background-color: rgb(105, 105, 105) !important;
+    cursor: pointer;
+}
 
-.newsCard:hover
+.newsCardold:hover
 {
     color: rgb(0, 122, 179);
     border-color: rgb(0, 122, 179);

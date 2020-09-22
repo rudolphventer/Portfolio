@@ -1,11 +1,17 @@
 <template>
 <a v-bind:href =repo.html_url style="text-decoration: none; color: inherit;">
+  <!-- 
+    This component recieves a repo name and gets information about that repo from the Github API, then displays
+    the title and description as well as linking to the repo page. The language data is also extracted and 
+    Doughnut.js is used to create a doughnut chart of the language useage. 
+  -->
     <div class="cardGrid">
         <div class="detailsRepo">
             <h3>{{repo.name}}</h3>
             <div class="bio">{{repo.description}}</div>
             <div class="location">{{repo.full_name}}</div>
         </div>
+        <!-- Calling my doughnut and passing props to it -->
         <doughnut class="hiddenMobile" v-bind:languages="languages" :maxno="totalLines" v-if="totalLines >= 0"/>
     </div>
 </a>
@@ -31,9 +37,11 @@ export default {
     
   },
   created: async function () {
-      const repo = await fetch(process.env.VUE_APP_EVENTS_ROOT+this.repoName);
+        //Grabs repo data
+        const repo = await fetch(process.env.VUE_APP_EVENTS_ROOT+this.repoName);
         var repoData = await repo.json();
         this.repo = repoData;
+        //Grabs language data
         const languages = await fetch(process.env.VUE_APP_EVENTS_ROOT+this.repoName+"/languages");
         var langData = await languages.json();
         this.languages = langData;

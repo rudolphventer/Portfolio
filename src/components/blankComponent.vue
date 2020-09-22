@@ -1,4 +1,5 @@
 <template>
+<!-- A blank component that allows me to pass html as a prop -->
  <div>{{html}}</div>
     
 </template>

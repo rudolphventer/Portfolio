@@ -1,5 +1,6 @@
 <template>
 <div>
+    <!-- This component allows users to contact me by sending me a message via a Telegram bot -->
     <h3>{{error}}</h3>
         <p styl>Your Email Address</p>
       <div><input style="width: 80%; text-align: center" class="inputBox" v-model="contact"/></div>
@@ -22,7 +23,7 @@ export default {
           message: '',
           contact: '',
           check: '',
-          error: 'Contact Me'
+          error: 'Send me a message for my full CV or just a chat!'
       }
       
   },
@@ -38,6 +39,7 @@ export default {
         this.error = 'A message is required.';
         return
         }
+        //Checks if email is valid
         if (!this.contact || !this.validateEmail(this.contact)) {
         this.error = 'A valid email address is required.';
         return
@@ -45,6 +47,7 @@ export default {
         if(this.check == '')
         {
             this.error = 'Thanks for the message!';
+            //This is how simple the Telegram bot API is, it's awesome 👌
             fetch(process.env.VUE_APP_TELEGRAM_API_URL + this.contact + ' sent message: ' + this.message)
             this.message = '';
             this.contact = '';
@@ -60,9 +63,8 @@ export default {
 <style scoped> 
 .myButton {
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background-color:#ffffff;
 	border-radius:2px;
-	border:1px solid #dcdcdc;
+	border:1px solid rgb(105, 105, 105);
 	display:inline-block;
 	cursor:pointer;
 	color:#666666;
@@ -77,7 +79,7 @@ export default {
     box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background-color:#ffffff;
 	border-radius:2px;
-	border:1px solid #dcdcdc;
+	border:1px solid rgb(105, 105, 105);
 	display:inline-block;
 	color:#666666;
 	padding:6px 24px;

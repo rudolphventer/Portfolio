@@ -1,5 +1,6 @@
 <template>
   <div class="cardGrid">
+    <!-- This component gets user data from Github's API to display personal information about me -->
     <a v-bind:href =user.html_url style="text-decoration: none; color: inherit;">
       <div>
         <img alt="User Avatar" class="profilePic" v-bind:src="user.avatar_url" width="300px" height="auto">
@@ -38,8 +39,7 @@ export default {
   },
   mounted: async function () {
 
-        //const user = await this.axios.get(process.env.VUE_APP_USER_URL);
-        //this.user = user.data;
+        //Fetching user data grom Github's API and applying it to the component
         const user = await fetch(process.env.VUE_APP_USER_URL);
         var userData = await user.json();
         this.user = userData;
@@ -77,15 +77,10 @@ export default {
 	padding: 0%;
 	margin: 0%;
 	float: left;
-	background-color: aqua;
   }
   
 .cardGrid
 {
   grid-template-columns: repeat(auto-fit, minmax(10rem, auto));
 }
-  /*for desktop*/
-  @media only screen and (min-width: 768px) {
-    
-  } 
 </style>
