@@ -31,7 +31,6 @@ export default {
     
   },
   created: async function () {
-    console.log(this.repoName)
       const repo = await fetch(process.env.VUE_APP_EVENTS_ROOT+this.repoName);
         var repoData = await repo.json();
         this.repo = repoData;
@@ -39,7 +38,6 @@ export default {
         var langData = await languages.json();
         this.languages = langData;
         this.totalLines = await Object.entries(langData).reduce((a, b) => +a + +b[1], 0);
-        console.log(this.totalLines)
 
   }
 }

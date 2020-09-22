@@ -25,6 +25,7 @@ body {
 	height: 100%;
 	margin: 0;
 	width: 100vw;
+	
 	padding: 0%;
 	/* animation*/
 	box-sizing: border-box;
@@ -114,6 +115,30 @@ h3{
 	display: grid;
 	/*allows responsive scaling of grid*/
 	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.newsCard{
+    text-align: left;
+    border: 1px rgb(105, 105, 105) solid;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+}
+
+.newsCard:hover
+{
+    color: rgb(0, 122, 179);
+    border-color: rgb(0, 122, 179);
+    cursor: pointer;
+}
+
+.newsCardHeading
+{
+	
+
 }
 
 /*for desktop*/
