@@ -4,8 +4,6 @@ body {
 	height: auto;
 	scrollbar-width: none;  /* Firefox */
 	background: -webkit-linear-gradient(top, rgb(137, 155, 157) 0%, rgb(57, 75, 89) 18%, rgb(45, 47, 44) 57%, rgb(39, 43, 42) 100%);
-	background-attachment:fixed;
-	height:100%;
 }
 	
 
@@ -42,13 +40,28 @@ body {
 	  to { background-position: -150vw 0; }
   }
   
+  .overlay
+{
+    background-color: red ;
+    position:fixed;
+    width:100vw;
+    height:100vh;
+    top:0px;
+    left:0px;
+	z-index:500;
+	background: -webkit-linear-gradient(top, rgb(137, 155, 157) 0%, rgb(57, 75, 89) 18%, rgb(45, 47, 44) 57%, rgb(39, 43, 42) 100%);
+}
 .loader {
 	margin-top: 42vh; 
 	height: 16vh;
 	width: auto;
+	z-index: 600;
 	animation-name: spinner;
 	animation: spinner 2s 0s infinite;
-	} 
+	
+	
+
+}
 
 
  @keyframes spinner {

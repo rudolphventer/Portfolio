@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <img src="./assets/logolight.png" v-show="!showPage" class="loader"/>
+    <div class="overlay" v-show="!showPage">
+      <img src="./assets/logolight.png" class="loader"/>
+    </div>
     <div class="Background disable-scrollbars">
-    <div v-show="showPage">
+    <div>
       <img src="./assets/logolight.png" width="300px" height="auto">
         <div class="grid">
           <!-- The main container, much of the static data in the site is declared in the data component on this page -->
