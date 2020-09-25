@@ -24,9 +24,18 @@ export default {
     }
   },
   created: async function () {
+        //Emitting the signal that the component has started loading
+        this.sendWaiter(true);
       const newsInfo = await fetch(process.env.VUE_APP_EVENTS_API_URL);
         var newsJSON = await newsInfo.json();
         this.eventItems = newsJSON.reverse().slice(0, 5);
+        //Emitting the signal that the component is done loading
+        this.sendWaiter(false);
+  },
+  methods: {
+     sendWaiter (value) {
+         this.$emit('clicked', value)
+     }
   }}
 </script>
 

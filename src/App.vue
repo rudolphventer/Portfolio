@@ -1,19 +1,21 @@
 <template>
   <div id="app">
+    <img src="./assets/logolight.png" v-show="!showPage" class="loader"/>
     <div class="Background disable-scrollbars">
-        <img alt="Vue logo" src="./assets/logolight.png" width="300px" height="auto">
+    <div v-show="showPage">
+      <img src="./assets/logolight.png" width="300px" height="auto">
         <div class="grid">
           <!-- The main container, much of the static data in the site is declared in the data component on this page -->
-          <profile-card/>
-          <blank-component class="wide" v-html="aboutMe"/>
+          <profile-card @clicked="waiter"/>
+          <blank-component class="wide" v-html="aboutMe" />
 
-          <git-card v-bind:repoName="greentea"/>
-          <git-card v-bind:repoName="startpage"/>
-          <git-card v-bind:repoName="portfolio"/>
+          <git-card v-bind:repoName="greentea" @clicked="waiter"/>
+          <git-card v-bind:repoName="startpage" @clicked="waiter"/>
+          <git-card v-bind:repoName="portfolio" @clicked="waiter"/>
 
           <competence v-bind:chartdata="languageComp" v-bind:colour="0" v-bind:title='title1' class="fullwide"/>
 
-          <event-component/>
+          <event-component @clicked="waiter"/>
           <contact-me/>
           <blank-component v-html="Qualifications"/>
 
@@ -25,6 +27,7 @@
           
 
         </div>
+    </div>
     </div>
     
   </div>
@@ -39,7 +42,6 @@ import EventComponent from './components/eventComponent.vue'
 import ContactMe from './components/contactMe.vue'
 import competence from './components/competence.vue'
 
-
 export default {
   name: 'App',
   components: {
@@ -53,6 +55,7 @@ export default {
   },
   data() {
     return {
+      readyCount : 0,
       greentea: "greentea",
       startpage: "Startpage-V2",
       portfolio: "portfolio",
@@ -81,7 +84,7 @@ export default {
           {"name":"C++" , "value":20 },
           {"name":"ASP.Net" , "value":20 },
           ],
-      title1: 'A rough estimate of my experience with languages and frameworks',
+      title1: 'My Experience With Languages and Frameworks',
       toolComp: [
           {"name":"Node.js/NPM" , "value": 80},
           {"name":"AWS" , "value": 60},
@@ -92,7 +95,7 @@ export default {
           {"name":"MongoDB" , "value":45},
           {"name":"FireBase" , "value":35},
           ],
-      title2: 'A rough estimate of my experience with tools and platforms',
+      title2: 'My Experience With Tools and Platforms',
       projects: `
       <h3 class="newsCardHeading">Projects</h3>
       <br/>
@@ -108,10 +111,33 @@ export default {
       aboutPortfolio: 
       `
       <a style="text-decoration: none; color: inherit;" href="https://github.com/rudolphventer/Portfolio">Click here to see the ReadMe for this site. It's <strong>very</strong> entertaining</a>
-      `
+      `,
+      waitCounter: 0,
+      waitsComplete: 0,
+      showPage: false
+
     
     };
-}}
+},
+methods: {
+  //Here I wait for the components to load, when they are created they emit true and when they are fully loaded they emit false, I count the true emits to see how many components
+  //I am waiting for, then I wait for the amount of trues to equal the amount of falses, then I hide the spinner and show my page
+    waiter (value) {
+          if(value)
+          {
+            this.waitCounter++
+          } else if(!value)
+          {
+            this.waitsComplete++
+            if(this.waitCounter == this.waitsComplete)
+            {
+              this.showPage= true;
+            }
+          }
+          //console.log("waitCounter:", this.waitCounter, "waitsComplete:", this.waitsComplete)
+      },
+}
+}
 </script>
 
 <style>

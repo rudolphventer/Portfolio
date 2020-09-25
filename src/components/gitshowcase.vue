@@ -37,6 +37,8 @@ export default {
     
   },
   created: async function () {
+        //Emitting the signal that the component has started loading
+        this.sendWaiter(true);
         //Grabs repo data
         const repo = await fetch(process.env.VUE_APP_EVENTS_ROOT+this.repoName);
         var repoData = await repo.json();
@@ -46,8 +48,27 @@ export default {
         var langData = await languages.json();
         this.languages = langData;
         this.totalLines = await Object.entries(langData).reduce((a, b) => +a + +b[1], 0);
+        //Emitting the signal that the component is done loading
+        this.sendWaiter(false);
+  },
 
+  mounted: function () {
+    console.log("mounted")
+  },
+  methods: {
+     sendWaiter (value) {
+         this.$emit('clicked', value)
+     }
   }
+     /*
+      created: function () {
+        //Emitting the signal that the component has started loading
+        this.sendWaiter(true);
+      },
+      */
+     //Emitting the signal that the component is done loading
+     //this.sendWaiter(false);
+  
 }
 
 </script>
