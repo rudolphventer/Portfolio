@@ -61,8 +61,7 @@ export default {
       greentea: "greentea",
       startpage: "Startpage-V2",
       portfolio: "portfolio",
-      aboutMe: `<h3 style="padding-bottom: 0.5rem">About Me</h3>I am a final-year student pursuing a Bachelor of Science in Information Technology at North West University
-                seeking any opportunities that allow me to gain experience in the business information technology field. I am curious
+      aboutMe: `<h3 style="padding-bottom: 0.5rem">About Me</h3>I am curious
                 and a tinkerer with experience in a wide range of technologies. I am a quick learner and like to teach myself new
                 things and work on personal projects in my free time. I am fluent in English and Afrikaans`,
       Qualifications: 
@@ -76,9 +75,9 @@ export default {
       languageComp: [
           {"name":"Javascript" , "value":80},
           {"name":"CSS/HTML" , "value":80},
+          {"name":"React" , "value":80},
           {"name":"C#" , "value":50},
           {"name":"Java" , "value":50},
-          {"name":"React" , "value":40},
           {"name":"Angular" , "value":40},
           {"name":"Electron" , "value":40},
           {"name":"Vue" , "value":30},
@@ -89,10 +88,10 @@ export default {
       title1: 'My Experience With Languages and Frameworks',
       toolComp: [
           {"name":"Node.js/NPM" , "value": 80},
-          {"name":"AWS" , "value": 60},
+          {"name":"AWS" , "value": 80},
+          {"name":"PWAs" , "value":70},
           {"name":"Heroku" , "value":60},
           {"name":"Github" , "value":50},
-          {"name":"PWAs" , "value":50},
           {"name":"PostgreSQL" , "value":50},
           {"name":"MongoDB" , "value":45},
           {"name":"FireBase" , "value":35},
