@@ -24,7 +24,7 @@
           <blank-component v-html="projects"/>
           <competence v-bind:chartdata="toolComp" v-bind:colour="2" v-bind:title='title2' class="wide"/>
 
-          <stats-card class="fullwide tall"/>
+          <!-- <stats-card class="fullwide tall"/> -->
           <blank-component class="fullwide" v-html="aboutPortfolio"/>
           
 
@@ -37,7 +37,7 @@
 
 <script>
 import ProfileCard from './components/profilecard.vue'
-import StatsCard from './components/statscard.vue'
+// import StatsCard from './components/statscard.vue'
 import GitCard from './components/gitshowcase.vue'
 import BlankComponent from './components/blankComponent.vue'
 import EventComponent from './components/eventComponent.vue'
@@ -48,7 +48,7 @@ export default {
   name: 'App',
   components: {
     ProfileCard,
-    StatsCard,
+    // StatsCard,
     GitCard,
     BlankComponent,
     EventComponent,
@@ -67,16 +67,17 @@ export default {
       Qualifications: 
       `<h3 class="newsCardHeading">Qualifications</h3>
       <br/>
-      <div class="newsCard"><strong>National Senior Certificate (2017)</strong> Bryanston High School</div>
-      <div class="newsCard"><strong>Basic Web Design course (2018)</strong> North West University</div>
+      <div class="newsCard"><strong>BSc. Information Technology with Distinction at North West University (2020)</strong></div>
       <div class="newsCard"><strong>Advanced Web Design course (2018)</strong> North West University</div>
-      <div class="newsCard"><strong>BSc. IT at North West University</strong> expected graduation Dec 2020</div>
+      <div class="newsCard"><strong>AWS</strong> Certified Cloud Practitioner</div>
+      <div class="newsCard"><strong>Azure</strong>  Fundamentals, Data Fundamentals, and AI Fundamentals (2021)</div>
       `,
       languageComp: [
-          {"name":"Javascript" , "value":80},
-          {"name":"CSS/HTML" , "value":80},
-          {"name":"React" , "value":80},
-          {"name":"C#" , "value":50},
+          {"name":"Javascript" , "value":100},
+          {"name":"CSS/HTML" , "value":100},
+          {"name":"React" , "value":100},
+          {"name":"C#" , "value":60},
+          {"name":"Python/Pytest" , "value":60},
           {"name":"Java" , "value":50},
           {"name":"Angular" , "value":40},
           {"name":"Electron" , "value":40},
@@ -87,8 +88,8 @@ export default {
           ],
       title1: 'My Experience With Languages and Frameworks',
       toolComp: [
-          {"name":"Node.js/NPM" , "value": 80},
-          {"name":"AWS" , "value": 80},
+          {"name":"Node.js/NPM" , "value": 100},
+          {"name":"AWS" , "value": 100},
           {"name":"PWAs" , "value":70},
           {"name":"Heroku" , "value":60},
           {"name":"Github" , "value":50},
