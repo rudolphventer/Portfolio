@@ -73,7 +73,7 @@ Every time I commit to the master branch, a webhook tells AWS CopePipeline to co
 
   
 
-## --🌟--What's it do Though?--🌟--
+## --🌟--Whats it do Though?--🌟--
 
 Good question! I used a custom CSS grid card layout, each card is it's own component and does something different, the loader waits for each component to complete all it's requests before it shows the full page.
 
